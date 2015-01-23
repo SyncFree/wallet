@@ -1,0 +1,11 @@
+{application, wallet,
+ [
+  {description, "Virtual Wallet Application Prototype"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
