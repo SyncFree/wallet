@@ -25,6 +25,9 @@
 -type key() :: term().
 -type reason() :: atom().
 
+-define(ADDRESS, "localhost").
+-define(PORT, 8087).
+
 start(Args) ->
     [Key1, Key2] = Args,
     run([Key1,Key2]).
@@ -32,7 +35,7 @@ start(Args) ->
 -spec run([key()]) -> ok | {error, reason()}.
 run([Key_bal,Key_voucher])->
     io:format("Starting Wallet Client~n"),
-    case antidotec_pb_socket:start_link("localhost",8087) of
+    case  antidotec_pb_socket:start(?ADDRESS, ?PORT) of
         {ok, Pid} ->
             Result1 = testbalance(Key_bal, 10, [],Pid),
             io:format("~nTesting credit and debit operations: ~p ~n ", [Result1]),
